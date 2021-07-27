@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+/*import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -21,5 +21,16 @@ function App() {
     </div>
   );
 }
+
+export default App;*/
+import React from 'react';
+import { Button } from 'antd';
+import './App.css';
+
+const App = () => (
+    <div className="App">
+        <Button type="primary">Button</Button>
+    </div>
+);
 
 export default App;
