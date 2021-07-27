@@ -25,11 +25,12 @@ function App() {
 export default App;*/
 import React from 'react';
 import { Button } from 'antd';
+import Header from "./components/Header";
 import './App.css';
 
 const App = () => (
     <div className="App">
-        <Button type="primary">Button</Button>
+        <Header/>
     </div>
 );
 
