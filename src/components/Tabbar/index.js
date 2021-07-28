@@ -2,16 +2,18 @@ import { TabBar } from 'antd-mobile';
 import React,{Component} from 'react';
 import './index.css';
 
+
+
 export default class TabBarExample extends Component {
     constructor(props) {
         super(props);
+        console.log(this);
         this.state = {
             selectedTab: 'redTab',
             hidden: false,
             fullScreen: false,
         };
     }
-
     // renderContent(pageText) {
     //     // return (
     //     //     <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
@@ -40,7 +42,9 @@ export default class TabBarExample extends Component {
     //     // );
     //     console.log(pageText);
     // }
+
     render() {
+       // console.log(this.props.location.pathname);
         return (
             <div className={"app-tabbar"} style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 50 }}>
                 <TabBar
@@ -64,15 +68,16 @@ export default class TabBarExample extends Component {
                            }}
                         />
                         }
-                        selected={this.state.selectedTab === 'blueTab'}
+                        selected={this.state.selectedTab === 'redTab'}
                         //badge={1}
                         //选项卡图标
                         onPress={() => {
+                            //this.linkTo('/parking');
                             this.setState({
-                                selectedTab: 'blueTab',
+                                selectedTab: 'redTab',
                             });
                         }}
-                        data-seed="logId"
+                        //data-seed="logId"
                     >
                     </TabBar.Item>
                     <TabBar.Item
@@ -93,13 +98,15 @@ export default class TabBarExample extends Component {
                         title="Information"
                         key="Information"
                         //badge={'new'}
-                        selected={this.state.selectedTab === 'redTab'}
+                        selected={this.state.selectedTab === 'blueTab'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'redTab',
+                                selectedTab: 'blueTab',
                             });
-                        }}
-                        data-seed="logId1"
+                            //this.props.history.push('/parking');
+                        }
+                        }
+                        //data-seed="logId1"
                     >
                     </TabBar.Item>
                     <TabBar.Item
