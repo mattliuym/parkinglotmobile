@@ -13,3 +13,21 @@
 #tab-bar .demo-preview-item .am-tab-bar {
     background-color: white;
 }
+.parking{
+    background: url("./svg/parking.svg") center center /  21px 21px no-repeat;
+}
+.parking-selected{
+    background: url("./svg/parking_selected.svg") center center /  21px 21px no-repeat;
+}
+.info{
+    background: url("./svg/info.svg") center center /  21px 21px no-repeat;
+}
+.info-selected{
+    background: url("./svg/info_selected.svg") center center /  21px 21px no-repeat;
+}
+.settings{
+    background: url("./svg/settings.svg") center center /  21px 21px no-repeat;
+}
+.settings-selected{
+    background: url("./svg/settings_selected.svg") center center /  21px 21px no-repeat;
+}

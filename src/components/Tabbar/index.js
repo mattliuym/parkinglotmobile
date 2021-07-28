@@ -1,6 +1,7 @@
 import { TabBar } from 'antd-mobile';
 import React,{Component} from 'react';
-import './index.css'
+import './index.css';
+
 export default class TabBarExample extends Component {
     constructor(props) {
         super(props);
@@ -49,18 +50,18 @@ export default class TabBarExample extends Component {
                     hidden={this.state.hidden}
                 >
                     <TabBar.Item
-                        title="Life"
-                        key="Life"
-                        icon={<div style={{
+                        title="Parking"
+                        key="Parking"
+                        icon={<div className={"parking"} style={{
                             width: '22px',
                             height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+                            }}
                         />
                         }
-                        selectedIcon={<div style={{
+                        selectedIcon={<div className={"parking-selected"} style={{
                             width: '22px',
                             height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+                           }}
                         />
                         }
                         selected={this.state.selectedTab === 'blueTab'}
@@ -76,22 +77,22 @@ export default class TabBarExample extends Component {
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
-                            <div style={{
+                            <div className={"info"} style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                                }}
                             />
                         }
                         selectedIcon={
-                            <div style={{
+                            <div className={"info-selected"} style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                                }}
                             />
                         }
-                        title="Koubei"
-                        key="Koubei"
-                        badge={'new'}
+                        title="Information"
+                        key="Information"
+                        //badge={'new'}
                         selected={this.state.selectedTab === 'redTab'}
                         onPress={() => {
                             this.setState({
@@ -103,22 +104,22 @@ export default class TabBarExample extends Component {
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
-                            <div style={{
+                            <div className={"settings"} style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+                               }}
                             />
                         }
                         selectedIcon={
-                            <div style={{
+                            <div className={"settings-selected"} style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+                                }}
                             />
                         }
-                        title="Friend"
-                        key="Friend"
-                        dot
+                        title="Settings"
+                        key="Settings"
+                        //dot
                         selected={this.state.selectedTab === 'greenTab'}
                         onPress={() => {
                             this.setState({
