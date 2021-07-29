@@ -13,7 +13,7 @@ export default class App extends React.Component{
         return  (
             <div className="App">
                 <Header/>
-                <div id={"main-content"} onClick={this.resizeContent}>
+                <div id={"main-content"}>
                     <Switch>
                         <Route path={'/'} component={Parking} exact/>
                         <Route path={'/info'} component={Info}/>
@@ -23,8 +23,5 @@ export default class App extends React.Component{
                 <TabBarExample/>
             </div>
         )
-    }
-    resizeContent=()=>{
-        console.log(document.getElementById('main-content'));
     }
 }
