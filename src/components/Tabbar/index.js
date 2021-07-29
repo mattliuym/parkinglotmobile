@@ -1,13 +1,14 @@
 import { TabBar } from 'antd-mobile';
 import React,{Component} from 'react';
 import './index.css';
+import { withRouter } from 'react-router-dom'
 
 
 
-export default class TabBarExample extends Component {
+
+class TabBarExample extends Component {
     constructor(props) {
         super(props);
-        console.log(this);
         this.state = {
             selectedTab: 'redTab',
             hidden: false,
@@ -40,9 +41,7 @@ export default class TabBarExample extends Component {
     //     //         </a>
     //     //     </div>
     //     // );
-    //     console.log(pageText);
     // }
-
     render() {
        // console.log(this.props.location.pathname);
         return (
@@ -72,6 +71,7 @@ export default class TabBarExample extends Component {
                         //badge={1}
                         //选项卡图标
                         onPress={() => {
+                            this.props.history.push('/');
                             //this.linkTo('/parking');
                             this.setState({
                                 selectedTab: 'redTab',
@@ -100,10 +100,10 @@ export default class TabBarExample extends Component {
                         //badge={'new'}
                         selected={this.state.selectedTab === 'blueTab'}
                         onPress={() => {
+                            this.props.history.push('/info');
                             this.setState({
                                 selectedTab: 'blueTab',
                             });
-                            //this.props.history.push('/parking');
                         }
                         }
                         //data-seed="logId1"
@@ -129,6 +129,7 @@ export default class TabBarExample extends Component {
                         //dot
                         selected={this.state.selectedTab === 'greenTab'}
                         onPress={() => {
+                            this.props.history.push('/settings');
                             this.setState({
                                 selectedTab: 'greenTab',
                             });
@@ -141,4 +142,5 @@ export default class TabBarExample extends Component {
     }
 }
 
+export default withRouter(TabBarExample);
 // ReactDOM.render(<TabBarExample />, mountNode);
