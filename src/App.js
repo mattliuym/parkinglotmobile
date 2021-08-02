@@ -9,6 +9,12 @@ import './App.css';
 import 'antd-mobile/dist/antd-mobile.css';
 
 export default class App extends React.Component{
+
+    componentDidMount(){
+        //resize the main content to fit the screen size.
+        let clHeight = document.documentElement.clientHeight;
+        document.getElementById('main-content').style.height=clHeight-94+'px';
+    }
     render(){
         return  (
             <div className="App">
