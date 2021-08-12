@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import './index.css';
-import Parkimg from './images.jpeg'
-import axios from 'axios'
+import Parkimg from './images.jpeg';
+import LoadingImg from './loading-buffering.gif';
+import axios from 'axios';
 import { SearchBar, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 
 export default class Parking extends Component {
@@ -39,12 +40,24 @@ export default class Parking extends Component {
     }
     //this method is for searching plate by Axios from the database
     searchPlate=(plate)=>{
-        //console.log(plate);
+        //show loading img
+        if(plate==""){
+            alert(1);
+            return;
+        }
+        if(document.getElementById("loadingImg").style.display==="none"){
+            document.getElementById("loadingImg").style.display="block";
+        }
+        //use axios to get data from webapi.
         axios.get('/api/SearchPlate/GetCarInfo',{params:{s:plate}}).then(
             response=>{
                 if(!response.data[0])
                     return;
                 this.setState({result:response.data[0]});
+                //hide loading img
+                if(document.getElementById("loadingImg").style.display==="block"){
+                    document.getElementById("loadingImg").style.display="none";
+                }
             },
             error=>{
                 console.log(error);
@@ -82,9 +95,8 @@ export default class Parking extends Component {
                 >Click to Search</Button>
             </WingBlank>
             <WhiteSpace />
+            <img id={"loadingImg"} src={LoadingImg} style={{display:"none"}}/>
             {plateinfo}
         </div>);
     }
 }
-
-// ReactDOM.render(<SearchBarExample />, mountNode);
