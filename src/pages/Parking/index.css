@@ -16,3 +16,27 @@
 .imgBox {
     padding:10%;
 }
+.loading-img {
+    display: flex;
+    justify-content: flex-start;
+}
+.align {
+    display: flex;
+    flex-direction: column;
+}
+.sub-title {
+    color: #888;
+    font-size: 14px;
+    padding: 30px 0 18px 0;
+}
+table{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #f0f0f0;
+}
+tr{
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+}

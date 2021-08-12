@@ -3,7 +3,7 @@ import './index.css';
 import Parkimg from './images.jpeg';
 import LoadingImg from './loading-buffering.gif';
 import axios from 'axios';
-import { SearchBar, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import {Toast,SearchBar, Button, WhiteSpace, WingBlank, ActivityIndicator} from 'antd-mobile';
 
 export default class Parking extends Component {
     state = {
@@ -42,7 +42,7 @@ export default class Parking extends Component {
     searchPlate=(plate)=>{
         //show loading img
         if(plate==""){
-            alert(1);
+            Toast.info("Please enter your plate");
             return;
         }
         if(document.getElementById("loadingImg").style.display==="none"){
@@ -62,7 +62,7 @@ export default class Parking extends Component {
             error=>{
                 console.log(error);
             }
-        )
+        );
     }
     render() {
         let plateinfo;
@@ -73,6 +73,7 @@ export default class Parking extends Component {
                         <tbody>
                             <tr><td>Plate Number: </td><td>{this.state.result.plate}</td></tr>
                             <tr><td>Entered Time: </td><td>{this.getDate(this.state.result.inTime)}</td></tr>
+                            <tr><td>You have to pay: </td><td>${this.state.result.fees}</td></tr>
                         </tbody>
                     </table>
                 </div>;
@@ -95,7 +96,18 @@ export default class Parking extends Component {
                 >Click to Search</Button>
             </WingBlank>
             <WhiteSpace />
-            <img id={"loadingImg"} src={LoadingImg} style={{display:"none"}}/>
+            {/*<img id={"loadingImg"} src={LoadingImg} style={{display:"none"}}/>*/}
+            <div id={"loadingImg"} style={{display:"none"}}>
+                <WingBlank>
+                    <div className="loading-container">
+                        <div className="loading-img">
+                            <ActivityIndicator size={"large"}
+                                text="Loading..."
+                            />
+                        </div>
+                    </div>
+                </WingBlank>
+            </div>
             {plateinfo}
         </div>);
     }
