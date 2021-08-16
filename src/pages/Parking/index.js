@@ -73,6 +73,7 @@ export default class Parking extends Component {
                         <tbody>
                             <tr><td>Plate Number: </td><td>{this.state.result.plate}</td></tr>
                             <tr><td>Entered Time: </td><td>{this.getDate(this.state.result.inTime)}</td></tr>
+                            <tr><td>You have parked for:</td><td>{this.state.result.timeLength} minutes</td></tr>
                             <tr><td>You have to pay: </td><td>${this.state.result.fees}</td></tr>
                         </tbody>
                     </table>
