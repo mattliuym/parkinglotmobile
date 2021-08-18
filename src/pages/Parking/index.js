@@ -19,9 +19,9 @@ export default class Parking extends Component {
     clear = () => {
         this.setState({ value: '' });
     };
-    handleClick = () => {
-        //this.manualFocusInst.focus();
-    }
+    // handleClick = () => {
+    //     //this.manualFocusInst.focus();
+    // }
     //get the car information from backend
     getPlate = () =>{
         const {searchInput} = this;
@@ -36,7 +36,7 @@ export default class Parking extends Component {
         let  h = myDate.getHours();
         let m = myDate.getMinutes();
         let now = `${date}/${month}/${year} at ${h}:${m}`;
-        return now
+        return now;
     }
     //this method is for searching plate by Axios from the database
     searchPlate=(plate)=>{
@@ -66,6 +66,7 @@ export default class Parking extends Component {
     }
     render() {
         let plateinfo;
+        let payinfo;
         if(this.state.result!==""){
             plateinfo=
                 <div id={'plateInfo'}>
@@ -78,7 +79,20 @@ export default class Parking extends Component {
                         </tbody>
                     </table>
                 </div>;
+            if(this.state.result.isPaid){
+                payinfo=
+                    <div>
+                        Yes, you have paid the parking fees. Please leave the parking lot in 20 minues;
+                    </div>
+            }else{
+                payinfo=
+                    <div>
+                        You have yet paid the parking fees.
+                        <button>Click here to finish your payment</button>
+                    </div>
+            }
         }
+
         return (<div>
             {/*<WingBlank><div className="sub-title">Normal</div></WingBlank>*/}
             <div className={'imgBox'}>
@@ -110,6 +124,7 @@ export default class Parking extends Component {
                 </WingBlank>
             </div>
             {plateinfo}
+            {payinfo}
         </div>);
     }
 }
