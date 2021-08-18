@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import './index.css';
 import Parkimg from './images.jpeg';
-import LoadingImg from './loading-buffering.gif';
+// import LoadingImg from './loading-buffering.gif';
 import axios from 'axios';
 import {Toast,SearchBar, Button, WhiteSpace, WingBlank, ActivityIndicator} from 'antd-mobile';
 
@@ -41,7 +41,7 @@ export default class Parking extends Component {
     //this method is for searching plate by Axios from the database
     searchPlate=(plate)=>{
         //show loading img
-        if(plate==""){
+        if(plate===""){
             Toast.info("Please enter your plate");
             return;
         }
@@ -66,7 +66,7 @@ export default class Parking extends Component {
     }
     render() {
         let plateinfo;
-        if(this.state.result!=""){
+        if(this.state.result!==""){
             plateinfo=
                 <div id={'plateInfo'}>
                     <table>
@@ -82,7 +82,7 @@ export default class Parking extends Component {
         return (<div>
             {/*<WingBlank><div className="sub-title">Normal</div></WingBlank>*/}
             <div className={'imgBox'}>
-                <img src={Parkimg} />
+                <img alt={""} src={Parkimg} />
             </div>
             <SearchBar placeholder="Please enter your plate"
                        maxLength={6}
