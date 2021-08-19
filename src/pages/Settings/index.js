@@ -6,35 +6,45 @@ import './index.css';
 
 export default class Settings extends Component{
     state={
-        show:false
+        show:false,
+        headerName:""
     }
     setShow=(status)=>{
         this.setState({show:status});
-        //console.log(this.state);
+    }
+    showModal=(header)=>{
+        this.setShow(true);
+        this.setState({headerName:header});
+
     }
     render() {
         console.log(this.state.show);
-        let modal =
-            <Modal  show={this.state.show}  dialogClassName="modal-90w" onHide={()=>this.setShow(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Modal body content</Modal.Body>
-            </Modal>;
         return (
+            <div>
                 <ListGroup className={"listGroup"}>
-                    <ListGroup.Item action href={"/info"}>
-                        Link 1
+                    <ListGroup.Item action onClick={()=>this.showModal("Lease a Park")}>
+                        Lease a Park
                     </ListGroup.Item>
-                    <ListGroup.Item action onClick={()=>this.setShow(true)}>
-                        Link 2
+                    <ListGroup.Item action onClick={()=>this.showModal("Contact Us")}>
+                        Contact Us
                     </ListGroup.Item>
-                    <ListGroup.Item action>
-                        This one is a button {this.state.show}
+                    <ListGroup.Item action onClick={()=>this.showModal("Feedbacks")}>
+                        Feedbacks
                     </ListGroup.Item>
-                    {modal}
+                    <ListGroup.Item action onClick={()=>this.showModal("About this Web App")}>
+                        About this Web App
+                    </ListGroup.Item>
+                    <ListGroup.Item action onClick={()=>this.showModal("Help")}>
+                        Help
+                    </ListGroup.Item>
                 </ListGroup>
-
+                <Modal  dialogClassName="modal-90w" show={this.state.show}  onHide={()=>this.setShow(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{this.state.headerName}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Body content</Modal.Body>
+                </Modal>
+            </div>
         )
     }
 }
