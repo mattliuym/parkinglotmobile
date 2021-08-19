@@ -1,0 +1,37 @@
+.infoContent{
+    padding-top: 40%;
+    height: 500px;
+    display: none;
+    flex-flow: column;
+    justify-content: space-around;
+}
+.tableStyle{
+    font-size: 17px;
+    border: 1px solid black;
+}
+tr{
+    border: 1px solid black;
+    height: 50px;
+    line-height: 50px;
+}
+td{
+    border: 1px solid black;
+}
+.notice{
+    font-size: 16px;
+    color: red;
+    font-weight: 500;
+}
+.priceClass{
+    width: 250px;
+}
+.price{
+    text-align: center;
+    font-weight: 500;
+}
+.parkInfo{
+    padding-bottom: 20%;
+}
+.priceInfo{
+
+}

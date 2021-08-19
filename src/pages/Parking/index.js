@@ -60,7 +60,10 @@ export default class Parking extends Component {
                 }
             },
             error=>{
-                console.log(error);
+                if(document.getElementById("loadingImg").style.display==="block"){
+                    document.getElementById("loadingImg").style.display="none";
+                }
+                Toast.fail("Cannot find any information. Please check your plate number!");
             }
         );
     }
@@ -82,13 +85,13 @@ export default class Parking extends Component {
             if(this.state.result.isPaid){
                 payinfo=
                     <div>
-                        Yes, you have paid the parking fees. Please leave the parking lot in 20 minues;
+                        <span>Yes, you have paid the parking fees. Please leave the parking lot in 20 minues.</span>
                     </div>
             }else{
                 payinfo=
                     <div>
-                        You have yet paid the parking fees.
-                        <button>Click here to finish your payment</button>
+                        <span>You have yet paid the parking fees.</span>
+                        <Button size="small" className={"payButton"}>Tap here to pay</Button>
                     </div>
             }
         }
@@ -108,7 +111,7 @@ export default class Parking extends Component {
             <WingBlank>
                 <Button className={"searchButton"}
                     onClick={this.getPlate}
-                >Click to Search</Button>
+                >Tap to Search</Button>
             </WingBlank>
             <WhiteSpace />
             {/*<img id={"loadingImg"} src={LoadingImg} style={{display:"none"}}/>*/}

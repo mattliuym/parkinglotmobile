@@ -124,7 +124,7 @@ class TabBarExample extends Component {
                                 }}
                             />
                         }
-                        title="Settings"
+                        title="More Options"
                         key="Settings"
                         //dot
                         selected={this.state.selectedTab === 'greenTab'}
