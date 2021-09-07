@@ -82,7 +82,7 @@ export default class Parking extends Component {
                         </tbody>
                     </table>
                 </div>;
-            if(this.state.result.isPaid){
+            if(this.state.result.isPaid&&!this.state.result.isMonthly){
                 payinfo=
                     <div>
                         <span>Yes, you have paid the parking fees. Please leave the parking lot in 20 minues.</span>
