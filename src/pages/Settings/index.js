@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 import './index.css';
 
 

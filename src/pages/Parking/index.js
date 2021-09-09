@@ -31,11 +31,11 @@ export default class Parking extends Component {
     getDate=(time)=>{
         let myDate = new Date(time);
         let year = myDate.getFullYear();
-        let month = (myDate.getMonth()+1 < 10 ? '0'+(myDate.getMonth()+1) : myDate.getMonth()+1) ;//获取月
-        let date = myDate.getDate();
-        let  h = myDate.getHours();
-        let m = myDate.getMinutes();
-        let now = `${date}/${month}/${year} at ${h}:${m}`;
+        let month = (myDate.getMonth()+1 < 10 ? '0'+(myDate.getMonth()+1) : myDate.getMonth()+1) ;
+        let date = (myDate.getDate()<10? '0'+myDate.getDate() : myDate.getDate());
+        let  h = (myDate.getHours()<10? '0'+myDate.getHours() : myDate.getHours());
+        let m = (myDate.getMinutes()<10? '0'+myDate.getMinutes():myDate.getMinutes());
+        let now = `${date}-${month}-${year}   ${h}:${m}`;
         return now;
     }
     //this method is for searching plate by Axios from the database
