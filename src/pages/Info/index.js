@@ -86,7 +86,7 @@ export default class Info extends Component{
         return(
             <div id={"infoForm"} className={index.infoContent}>
                 <div className={index.parkInfo}>
-                    <h4>Parking Lot Information</h4>
+                    <h4>Carpark Information</h4>
                     <table className={index.tableStyle}>
                         <tbody>
                         <tr><td>Open hours:</td>{span}</tr>
@@ -95,7 +95,7 @@ export default class Info extends Component{
                     </table>
                 </div>
                 <div className={index.priceInfo}>
-                    <h4>Pricing</h4>
+                    <h4>Prices</h4>
                     {pricing}
                 </div>
             </div>

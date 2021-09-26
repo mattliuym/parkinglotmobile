@@ -16,3 +16,21 @@
     font-size: 18px;
     height:70px;
 }
+.reservation-table{
+    border: 2px dashed lightseagreen;
+    font-size: 18px;
+}
+.reservation-table td{
+    border: 2px solid #2070b2;
+}
+.reservation-detail{
+    text-align: center;
+    font-weight: 500;
+    color: #2aabd2;
+}
+#basic{
+    margin-top: 100px;
+}
+.search-button{
+    margin-top: 20px;
+}

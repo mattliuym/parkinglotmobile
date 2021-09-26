@@ -85,7 +85,7 @@ export default class Parking extends Component {
             if(this.state.result.isPaid&&!this.state.result.isMonthly){
                 payinfo=
                     <div>
-                        <span>Yes, you have paid the parking fees. Please leave the parking lot in 20 minues.</span>
+                        <span>Yes, you have paid the parking fees. Please leave the carpark in 20 minues.</span>
                     </div>
             }else{
                 payinfo=

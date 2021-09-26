@@ -16,6 +16,10 @@ export default class Settings extends Component{
         20:
         30:
         */
+        expiry:'',
+        leaseId:0,
+        plate:"",
+        valid:"",
     }
     setShow=(status)=>{
         this.setState({show:status});
@@ -36,12 +40,28 @@ export default class Settings extends Component{
         }
         axios.get('/api/LeasePark/SearchLease',{params:{p:plate}}).then(res=>{
            if(res.data.leaseId===0){
-               console.log(1);
+               document.getElementById("not-found").style.display="block";
            }else{
-               console.log(res.data);
+               document.getElementById("basic").style.display="block";
+               this.setState({
+                   plate:res.data.plate,
+                   expiry:res.data.expiry,
+                   valid:res.data.valid,
+                   leaseId:res.data.leaseId
+               })
            }
         });
-        console.log(plate);
+    }
+    //reformat the date format into a readable style.
+    getDate=(time)=>{
+        let myDate = new Date(time);
+        let year = myDate.getFullYear();
+        let month = (myDate.getMonth()+1 < 10 ? '0'+(myDate.getMonth()+1) : myDate.getMonth()+1) ;
+        let date = (myDate.getDate()<10? '0'+myDate.getDate() : myDate.getDate());
+        // let  h = (myDate.getHours()<10? '0'+myDate.getHours() : myDate.getHours());
+        // let m = (myDate.getMinutes()<10? '0'+myDate.getMinutes():myDate.getMinutes());
+        // let now = `${date}-${month}-${year}   ${h}:${m}`;
+        return `${date}-${month}-${year}`;
     }
     // onChange= (value) => {
     //     this.setState({ value });
@@ -63,15 +83,42 @@ export default class Settings extends Component{
                                  ref={c=>this.searchInput=c}
                       />
                       <WingBlank>
-                          <Button onClick={()=>this.getPlate()}>Next Step</Button>
+                          <Button className={"search-button"} onClick={()=>this.getPlate()}>Tap to Search</Button>
                       </WingBlank>
+                      <div id={"basic"} style={{display:"none"}}>
+                          {/*<div>*/}
+                          {/*    <span>Plate:</span><span>{this.state.plate}</span>*/}
+                          {/*</div>*/}
+                          {/*<div>*/}
+                          {/*    <span>Expired Date:</span><span>{this.getDate(this.state.expiry)}</span>*/}
+                          {/*</div>*/}
+                          <table cellspacing="10" className={"reservation-table"}>
+                              <tr>
+                                  <td>Plate:</td>
+                                  <td className={"reservation-detail"}>{this.state.plate}</td>
+                              </tr>
+                              <tr>
+                                  <td>Expired Date:</td>
+                                  <td className={"reservation-detail"}>{this.getDate(this.state.expiry)}</td>
+                              </tr>
+                          </table>
+                      </div>
+                      <div id={"not-found"} style={{display:"none"}}>
+                          <span>You have never reserved a park, would you like to lease a park for a month? You can go to our office for help.</span>
+                      </div>
+
                   </div>
                 );
                 break;
             case 20:
                 main=(
                     <div>
-                        2
+                        <div>
+                            <span>Phone:</span><span>0224106837</span>
+                        </div>
+                        <div>
+                            <span>Email:</span><span>mattliuym@gmail.com</span>
+                        </div>
                     </div>
                 );
                 break;
@@ -84,15 +131,15 @@ export default class Settings extends Component{
                 break;
             case 40:
                 main=(
-                    <div>
-                        3
+                    <div style={{"font-size":"16px"}}>
+                        This is a COMPX576 project :)
                     </div>
                 );
                 break;
             case 50:
                 main=(
-                    <div>
-                        3
+                    <div style={{"font-size":"16px"}}>
+                        This is the user side application. Car driver can use this webpage searching their parking condition, including the parking time and parking fees.
                     </div>
                 );
                 break;
@@ -106,7 +153,7 @@ export default class Settings extends Component{
             <div>
                 <ListGroup className={"listGroup"}>
                     <ListGroup.Item action onClick={()=>this.showModal("Lease a Park",10)}>
-                        Lease a Park
+                        Check your reservation
                     </ListGroup.Item>
                     <ListGroup.Item action onClick={()=>this.showModal("Contact Us",20)}>
                         Contact Us
