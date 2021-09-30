@@ -27,7 +27,6 @@ export default class Settings extends Component{
     showModal=(header,code)=>{
         this.setShow(true);
         this.setState({headerName:header,code});
-
     }
     getPlate = () =>{
         const {searchInput} = this;
@@ -61,7 +60,7 @@ export default class Settings extends Component{
         // let  h = (myDate.getHours()<10? '0'+myDate.getHours() : myDate.getHours());
         // let m = (myDate.getMinutes()<10? '0'+myDate.getMinutes():myDate.getMinutes());
         // let now = `${date}-${month}-${year}   ${h}:${m}`;
-        return `${date}-${month}-${year}`;
+        return `${date}-rm${month}-${year}`;
     }
     // onChange= (value) => {
     //     this.setState({ value });

@@ -1,15 +1,25 @@
 import React,{Component} from "react";
 import './index.css';
 import Parkimg from './images.jpeg';
-// import LoadingImg from './loading-buffering.gif';
 import axios from 'axios';
 import {Toast,SearchBar, Button, WhiteSpace, WingBlank, ActivityIndicator} from 'antd-mobile';
-
+import Modal from "react-bootstrap/Modal";
+import CheckoutForm from "../../components/CheckoutForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+const promise = loadStripe("pk_test_51JeYy8IkqIguFzWDTAHFIdqBqPRfzRVlcQHVmQ1h0cyvcuvoopKwD6JTlr6CYyaouOj8fsXDrEEZNy1d2VPTNLK100bcYiv2gK");
 export default class Parking extends Component {
     state = {
         value: '',
         result:'',
+        show:false,
     };
+    setShow=(status)=>{
+        this.setState({show:status});
+    }
+    showModal=()=>{
+        this.setShow(true);
+    }
     componentDidMount() {
         //this.autoFocusInst.focus();
     }
@@ -66,6 +76,7 @@ export default class Parking extends Component {
                 Toast.fail("Cannot find any information. Please check your plate number!");
             }
         );
+
     }
     render() {
         let plateinfo;
@@ -91,11 +102,11 @@ export default class Parking extends Component {
                 payinfo=
                     <div>
                         <span>You have yet paid the parking fees.</span>
-                        <Button size="small" className={"payButton"}>Tap here to pay</Button>
+                        <Button size="small" className={"payButton"} onClick={()=>this.showModal()}>Tap here to pay</Button>
                     </div>
             }
         }
-
+        const rt=this.state.result;
         return (<div>
             {/*<WingBlank><div className="sub-title">Normal</div></WingBlank>*/}
             <div className={'imgBox'}>
@@ -128,6 +139,17 @@ export default class Parking extends Component {
             </div>
             {plateinfo}
             {payinfo}
+            <Modal aria-labelledby="contained-modal-title-vcenter" centered show={this.state.show}  onHide={()=>this.setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{this.state.headerName}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div style={{"margin-bottom":"20px"}}><span>You need to pay: </span><span style={{"font-size":"20px","margin-left":"10px"}}>${this.state.result.fees}</span></div>
+                    <Elements stripe={promise}>
+                        <CheckoutForm result={rt} />
+                    </Elements>
+                </Modal.Body>
+            </Modal>
         </div>);
     }
 }
