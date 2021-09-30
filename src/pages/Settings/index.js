@@ -4,7 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './index.css';
 import {Button, SearchBar, Toast, WhiteSpace, WingBlank} from "antd-mobile";
-
+import { AiTwotoneCustomerService } from 'react-icons/ai';
+import { AiFillMail} from 'react-icons/ai';
 
 export default class Settings extends Component{
     state={
@@ -111,12 +112,24 @@ export default class Settings extends Component{
                 break;
             case 20:
                 main=(
-                    <div>
-                        <div>
-                            <span>Phone:</span><span>0224106837</span>
+                    <div className={"contactContainer"}>
+                        <div className={"contactInner"}>
+                            <div className={"contactPhone"}>
+                                <AiTwotoneCustomerService size={100}/>
+                            </div>
+                            <div className={"contactPhoneText"}>
+                                <span>Phone:</span><span>0224106837</span>
+                            </div>
+
                         </div>
-                        <div>
-                            <span>Email:</span><span>mattliuym@gmail.com</span>
+                        <div className={"contactInner"}>
+                            <div className={"contactEmail"}>
+                                <AiFillMail size={100} />
+                            </div>
+                            <div className={"contactEmailText"}>
+                                <span>Email:</span><span>mattliuym@gmail.com</span>
+                            </div>
+
                         </div>
                     </div>
                 );

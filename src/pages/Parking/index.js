@@ -102,7 +102,7 @@ export default class Parking extends Component {
                 payinfo=
                     <div>
                         <span>You have yet paid the parking fees.</span>
-                        <Button size="small" className={"payButton"} onClick={()=>this.showModal()}>Tap here to pay</Button>
+                        <Button className={"payButton"} onClick={()=>this.showModal()}>Tap here to pay</Button>
                     </div>
             }
         }
