@@ -79,7 +79,6 @@ export default class Parking extends Component {
 
     }
     render() {
-        console.log(this.state.result);
         let plateinfo;
         let payinfo;
         if(this.state.result!==""){
