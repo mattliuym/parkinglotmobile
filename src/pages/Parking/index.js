@@ -150,7 +150,7 @@ export default class Parking extends Component {
                     <Modal.Title>{this.state.headerName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div style={{"margin-bottom":"20px"}}><span>You need to pay: </span><span style={{"fontSize":"20px","marginLeft":"10px"}}>${this.state.result.fees}</span></div>
+                    <div style={{"marginBottom":"20px"}}><span>You need to pay: </span><span style={{"fontSize":"20px","marginLeft":"10px"}}>${this.state.result.fees}</span></div>
                     <Elements stripe={promise}>
                         <CheckoutForm result={rt} />
                     </Elements>
