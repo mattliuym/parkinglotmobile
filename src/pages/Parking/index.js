@@ -79,6 +79,7 @@ export default class Parking extends Component {
 
     }
     render() {
+        console.log(this.state.result);
         let plateinfo;
         let payinfo;
         if(this.state.result!==""){
@@ -97,6 +98,11 @@ export default class Parking extends Component {
                 payinfo=
                     <div>
                         <span>Yes, you have paid the parking fees. Please leave the carpark in 20 minues.</span>
+                    </div>
+            }else if(this.state.result.fees===0){
+                payinfo=
+                    <div>
+                        <span>You don't need to pay the parking fees</span>
                     </div>
             }else{
                 payinfo=
@@ -144,7 +150,7 @@ export default class Parking extends Component {
                     <Modal.Title>{this.state.headerName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div style={{"margin-bottom":"20px"}}><span>You need to pay: </span><span style={{"font-size":"20px","margin-left":"10px"}}>${this.state.result.fees}</span></div>
+                    <div style={{"margin-bottom":"20px"}}><span>You need to pay: </span><span style={{"fontSize":"20px","marginLeft":"10px"}}>${this.state.result.fees}</span></div>
                     <Elements stripe={promise}>
                         <CheckoutForm result={rt} />
                     </Elements>
